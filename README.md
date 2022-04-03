@@ -1,5 +1,5 @@
 # handm_data_visualize_app
-Data visualization app for H&amp;M competition in kaggle by streamlit.
+Data visualization app by [streamlit](https://streamlit.io/) for H&amp;M competition in kaggle.
 
 competition page: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/
 
