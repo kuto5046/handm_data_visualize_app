@@ -6,6 +6,10 @@ competition page: https://www.kaggle.com/competitions/h-and-m-personalized-fashi
 ## Features 
 
 
+https://user-images.githubusercontent.com/43205304/161410926-0dc5929f-cc9c-4e93-ba77-5ca420e73f5c.mov
+
+
+
 ## Directory
 ```
 .
