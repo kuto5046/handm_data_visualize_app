@@ -1,9 +1,21 @@
 # handm_data_visualize_app
-Data visualization app for H&amp;M competition in kaggle by streamlit.
+Data visualization app by [streamlit](https://streamlit.io/) for H&amp;M competition in kaggle.
 
 competition page: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/
 
 ## Features 
+### Customers
+You can check the following information by selecting a customer
+- Customer information
+- Customer transactions
+- Frequentry purchased articles images
+- Recently purchased Articles images
+
+### Articles
+You can check the following information by selecting a article
+- Article information
+- Article image
+
 https://user-images.githubusercontent.com/43205304/161410926-0dc5929f-cc9c-4e93-ba77-5ca420e73f5c.mov
 
 
