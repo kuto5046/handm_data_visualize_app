@@ -1,13 +1,10 @@
 # handm_data_visualize_app
 Data visualization app for H&amp;M competition in kaggle by streamlit.
- 
+
 competition page: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/
 
 ## Features 
-
-
 https://user-images.githubusercontent.com/43205304/161410926-0dc5929f-cc9c-4e93-ba77-5ca420e73f5c.mov
-
 
 
 ## Directory
@@ -16,7 +13,11 @@ https://user-images.githubusercontent.com/43205304/161410926-0dc5929f-cc9c-4e93-
 ├── README.md
 ├── app.py
 ├── config.yaml
-├── data (competition dataset folder)
+├── data
+│   ├── images
+│   ├── articles.csv
+│   ├── customers.csv
+│   └── transactions_train.csv
 └── requirements.txt
 ```
 

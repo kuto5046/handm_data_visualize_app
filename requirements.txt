@@ -1,5 +1,5 @@
+streamlit==1.8.1
 opencv-python
-streamlit
 pyyaml
 plotly
 pandas
