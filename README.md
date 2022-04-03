@@ -68,3 +68,15 @@ run this command in your terminal
 streamlit run app.py
 ```
 Then connect to the output URL or `localhost:8501`
+
+To change the settings about app, please edit `config.yaml`
+```yaml
+common:
+  data_dir: ./data/
+  image_dir: ./data/images/
+
+customers:
+  min_purchased_count: 20  # Minimum purchases count for random customer selection
+  num_sample: 10  # Number of image to show
+  max_display_per_col: 5  # Maximum number of image to display per column
+```
