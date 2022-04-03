@@ -1,0 +1,5 @@
+opencv-python
+streamlit
+pyyaml
+plotly
+pandas
