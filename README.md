@@ -63,7 +63,7 @@ unzip h-and-m-personalized-fashion-recommendations.zip
 ```
 
 ## Usage
-run in your terminal this command
+run this command in your terminal 
 ```shell
 streamlit run app.py
 ```
