@@ -1,5 +1,6 @@
 import streamlit as st
 import cv2
+import os 
 import pandas as pd 
 import random
 import plotly.express as px
@@ -103,10 +104,12 @@ def show_frequently_purchased_articles(df, target_customer_id, num_sample, max_d
         with col[j]:
             st.write(f"id: {article_id}")
             filename = str(image_dir + f'{article_id[:3]}/{article_id}.jpg')
-            img = cv2.imread(filename)[:,:,::-1]
-            st.image(img, use_column_width=True)
-            st.write(f"count: {purchased_count[i]}")
-    
+            if os.path.exists(filename):
+                img = cv2.imread(filename)[:,:,::-1]
+                st.image(img, use_column_width=True)
+                st.write(f"count: {purchased_count[i]}")
+            else:
+                st.error(f'Skip image because there is no file ({filename})')
 
 def show_recently_purchased_articles(df, target_customer_id, num_sample, max_display_per_col, image_dir):
     st.markdown("### Recently Purchased Articles")
@@ -119,9 +122,12 @@ def show_recently_purchased_articles(df, target_customer_id, num_sample, max_dis
         with col[j]:
             st.write(f"id:{article_id}")
             filename = str(image_dir + f'{article_id[:3]}/{article_id}.jpg')
-            img = cv2.imread(filename)[:,:,::-1]
-            st.image(img, use_column_width=True)
-            st.write(f"date: {recently_purchased_date[i]}")
+            if os.path.exists(filename):
+                img = cv2.imread(filename)[:,:,::-1]
+                st.image(img, use_column_width=True)
+                st.write(f"date: {recently_purchased_date[i]}")
+            else:
+                st.error(f'Skip image because there is no file ({filename})')
 
  
 def main():
