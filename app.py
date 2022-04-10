@@ -25,10 +25,27 @@ def get_sub_data(df, customers, articles, min_purchased_count):
     return unique_customers, active_unique_customers, unique_articles
 
 
-def visualize_article(articles, unique_articles, image_dir):
+def show_article_transactions(df, target_article_id):
+    st.markdown("### Article Transactions")
+    _df = df.loc[df['article_id']==target_article_id]
+    st.dataframe(_df)
+    fig = px.bar(
+        _df.groupby(['n_weeks_ago', 'sales_channel_id'])['customer_id'].count().reset_index().rename(columns={'customer_id':'purchase count'}), 
+        x='n_weeks_ago', y='purchase count', color='sales_channel_id', 
+        range_x=[df['n_weeks_ago'].max(), df['n_weeks_ago'].min()],
+        color_discrete_map={'1':'blue', '2':'red'}
+        )
+    fig.update_traces(width=1)
+    st.plotly_chart(fig)
+
+
+def visualize_article(df, articles, unique_articles, image_dir):
     target_article_id = select_target_article(unique_articles)
-    show_article_info(articles, target_article_id)
-    show_article_image(target_article_id, image_dir)
+    st.markdown("### Article Information")
+    col1, col2 = st.columns([1, 2])
+    show_article_image(target_article_id, image_dir, col1)
+    show_article_info(articles, target_article_id, col2)
+    show_article_transactions(df, target_article_id)
 
 
 def select_target_article(unique_articles):
@@ -40,16 +57,15 @@ def select_target_article(unique_articles):
     return target_article_id
 
 
-def show_article_info(articles, target_article_id):
+def show_article_info(articles, target_article_id, col):
     target_article_info = articles[articles['article_id']==target_article_id].T.astype(str)
-    st.markdown("### Article Information")
-    st.dataframe(target_article_info)
+    col.dataframe(target_article_info)
 
 
-def show_article_image(target_article_id, image_dir):
+def show_article_image(target_article_id, image_dir, col):
     filename = str(image_dir + f'{target_article_id[:3]}/{target_article_id}.jpg')
     img = cv2.imread(filename)[:,:,::-1]
-    st.image(img, use_column_width=True)
+    col.image(img, use_column_width=True)
 
 
 def visualize_customer(df, customers, unique_customers, active_unique_customers, num_sample, max_display_per_col, image_dir):
@@ -152,7 +168,7 @@ def main():
     if analysis_type == "Customers":
         visualize_customer(df, customers, unique_customers, active_unique_customers, num_sample, max_display_per_col, image_dir)
     elif analysis_type=="Articles":
-        visualize_article(articles, unique_articles, image_dir)
+        visualize_article(df, articles, unique_articles, image_dir)
     else:
         NotImplementedError
 
